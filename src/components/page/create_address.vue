@@ -6,7 +6,7 @@
     </mt-header>
     <div class="setBox">
       <input type="text" class="infos" placeholder="收货人姓名" v-model="sName">
-      <input type="tel" class="infos" placeholder="手机号码" v-model="phone">
+      <input type="tel" class="infos" placeholder="手机号码" v-model="phone" @blur="checkPhone(phone)">
       <div class="linkage" @click="cityChange">
         <div class="three">
           <input type="text" class="inputStyle" v-model="address" placeholder="选择省" @blur="showOut" readonly='readonly' />
@@ -36,7 +36,7 @@
       <div class="attention">
         <!-- <img src="../../img/jingao.png" alt=""> -->
         <p>
-          <span class="addressRed">新疆、西藏、青海、海南</span><br> 由于鸡蛋的保质特殊性 您选的地址将不发货
+          <span class="addressRed">新疆、西藏、青海、海南、港澳地区</span><br> 由于鸡蛋的保质特殊性 您选的地址将不发货
         </p>
       </div>
       <div class="RedBtns">
@@ -183,7 +183,9 @@ export default {
             this.address.substring(0, 3) == "青海省" ||
             this.address.substring(0, 2) == "西藏" ||
             this.address.substring(0, 3) == "海南省" ||
-            this.address.substring(0, 2) == "新疆"
+            this.address.substring(0, 2) == "新疆" ||
+            this.address.substring(0, 2) == "香港" ||
+            this.address.substring(0, 2) == "澳门"
           ) {
             // this.goCancel();
             this.hintShow = true;
@@ -536,10 +538,10 @@ export default {
         height: 0.9rem;
       }
       p {
-        width: 80%;
+        width: 95%;
         line-height: 1.1rem;
         text-align: left;
-        padding-left: 0.5rem;
+        padding-left: 0.1rem;
         span {
           color: #f50808;
           line-height: 1.3rem;
