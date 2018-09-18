@@ -91,6 +91,7 @@
 
 <script>
 import { Header } from "mint-ui";
+import { Toast } from "mint-ui";
 import axios from "axios";
 import qs from "qs";
 import wx from "weixin-js-sdk";
@@ -144,9 +145,20 @@ export default {
     },
     //点击"支付按钮"调用支付接口
     goPay() {
-      // if(  ){
-      //   return;
-      // }
+      if (
+        this.province == "" ||
+        this.phone == "" ||
+        this.detail == "" ||
+        this.city == "" ||
+        this.receiver == "" ||
+        this.detail == ""
+      ) {
+        Toast({
+          message: "收货地址不能为空",
+          duration: 1500
+        });
+        return;
+      }
       // this.$router.push({path:'/pay_success'});
       var $this = this;
       var baseUrl = BaseUrl + "api/buy";

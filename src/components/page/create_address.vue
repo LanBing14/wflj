@@ -18,7 +18,7 @@
 
     <textarea v-model="detailed" placeholder="详细地址"></textarea>
     <div class="default">
-      <div class="xuanze">
+      <div class="xuanze" @click="goDefault">
         <img src="../../img/gouxuan.png" alt="" v-show="showChoice">
       </div>
       <p>设为默认地址</p>
@@ -357,7 +357,7 @@ export default {
       }, 100);
     });
     this.openid = localStorage.getItem("openid");
-    console.log("添加地址++" + this.openid);
+    // console.log("添加地址++" + this.openid);
 
     this.packageId = this.$route.query.packageId;
     this.amount = this.$route.query.number;
